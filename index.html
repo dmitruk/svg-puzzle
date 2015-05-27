@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8">
+    <title>Puzzle</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        .puzzle-wrap img {
+            width: 600px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="puzzle" class="puzzle-wrap">
+        <img src="img/Cars-Guido.jpg">
+        <div class="puzzle"></div>
+    </div>
+
+    <script src="js/vendor/jquery-1.11.1.min.js"></script>
+    <script src="js/vendor/snap.svg-min.js"></script>
+    <script src="js/puzzle.js"></script>
+    <script>
+        "use strict";
+
+        var $window = $(window),
+            puzzle
+        ;
+
+        $window
+            .on('load', function() {
+                var $puzzleWrap = $(".puzzle-wrap"),
+                    $img        = $("img", $puzzleWrap)
+                ;
+
+                puzzle = new Puzzle(
+                    $(".puzzle", $puzzleWrap)[0],
+                    $img.attr("src"),
+                    {
+                        width:  $window.width() * 0.99,
+                        height: $window.height() * 0.99,
+                        size:  {x: 4, y: 3},
+                        shadow: true,
+                        callback: {
+                            resolve: function() {
+                                alert("Yaa!");
+                            }
+                        }
+                    }
+                );
+            })
+            .on('resize', function() {
+                if (puzzle && puzzle.isReady()) {
+                    puzzle.setSize({
+                        width:  $window.width() * 0.99,
+                        height: $window.height() * 0.99
+                    });
+                }
+            })
+        ;
+    </script>
+</body>
+</html>

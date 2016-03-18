@@ -53,11 +53,11 @@ Get puzzle width and height.
 Set puzzle grid size.
 `size` may be `Object` like `{x: 4, y: 3}` or one of predefined `String`s:
 
-Name   |x |y
-----   |--|--
-big    |4 |4
-medium |6 |6
-small  |8 |8
+|  Name  |  x  |  y  |
+| ------ | --- | --- |
+| big    |  4  |  4  |
+| medium |  6  |  6  |
+| small  |  8  |  8  |
 
 ### `Object` getGridSize()
 Set puzzle grid size.
